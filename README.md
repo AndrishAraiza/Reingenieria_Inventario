@@ -63,5 +63,6 @@ pom.xml
 
 Andrish Araiza
 
-Documentacion
-file:///Users/andrisharaizaespinoza/Desktop/Reingenieria_Inventario/docs/index.html
+## 📖 Documentación Técnica
+Puedes consultar el Javadoc interactivo aquí: 
+[Ver Javadoc del Proyecto](https://AndrishAraiza.github.io/Reingenieria_Inventario/)

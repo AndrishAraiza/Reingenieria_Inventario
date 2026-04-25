@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    Vista AlmacenView.fxml
+    Interfaz gráfica para la gestión de almacenes en el sistema de inventario.
+    Permite ver el listado de almacenes, agregar nuevos, editar nombre
+    y eliminar almacenes existentes.
+
+    Relacionada con: controlador.AlmacenController
+-->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controlador.AlmacenController">
+    <!-- Título superior de la ventana -->
+    <top>
+        <Label text="Gestión de Almacenes"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1976D2; -fx-padding: 16px;"/>
+    </top>
+    <!-- Tabla principal de almacenes -->
+    <center>
+        <TableView fx:id="tablaAlmacenes">
+            <columns>
+                <!-- Columna de ID del almacén -->
+                <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                <!-- Columna de nombre del almacén -->
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                <!-- Columna con el total de productos de ese almacén -->
+                <TableColumn fx:id="colCantidad" text="Productos en este almacén" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+    <!-- Sección inferior con campo de texto y botones de acción -->
+    <bottom>
+        <HBox spacing="14" alignment="center" style="-fx-padding: 16px;">
+            <!-- Campo para nombre del almacén (agregar o editar) -->
+            <TextField fx:id="txtNombre" promptText="Nombre del Almacén"/>
+            <!-- Botones de acción -->
+            <Button text="Agregar" fx:id="btnAgregar"/>
+            <Button text="Editar" fx:id="btnEditar"/>
+            <Button text="Eliminar" fx:id="btnEliminar"/>
+        </HBox>
+    </bottom>
+</BorderPane>

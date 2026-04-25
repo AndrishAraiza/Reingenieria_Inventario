@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    InventarioView.fxml
+    Vista principal de la aplicación de Inventario y Productos con JavaFX.
+    Permite visualizar productos, así como agregarlos, editarlos o eliminarlos.
+    Asocia cada producto a un almacén preexistente seleccionado de un ComboBox.
+    Relaciona con el controlador: controlador.InventarioController
+-->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controlador.InventarioController">
+    <!-- Título principal de la ventana -->
+    <top>
+        <Label text="Inventario de Productos"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 16px;"/>
+    </top>
+    <!-- Tabla central con los productos registrados -->
+    <center>
+        <TableView fx:id="tablaProductos">
+            <columns>
+                <!-- Columna: ID del producto -->
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <!-- Columna: Nombre del producto -->
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="120"/>
+                <!-- Columna: Cantidad del producto -->
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
+                <!-- Columna: Descripción del producto -->
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="140"/>
+                <!-- Columna: Nombre del almacén asociado al producto -->
+                <TableColumn fx:id="colAlmacen" text="Almacén" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+    <!-- Panel inferior de acciones; área para capturar datos y botones -->
+    <bottom>
+        <HBox spacing="12" alignment="center" style="-fx-padding: 10px;">
+            <!-- Campo: Nombre del producto -->
+            <TextField fx:id="txtNombre" promptText="Nombre Producto"/>
+            <!-- Campo: Cantidad -->
+            <TextField fx:id="txtCantidad" promptText="Cantidad"/>
+            <!-- Campo: Descripción -->
+            <TextField fx:id="txtDescripcion" promptText="Descripción"/>
+            <!-- ComboBox: Selección del almacén asociado -->
+            <ComboBox fx:id="comboAlmacen" promptText="Selecciona un almacén"/>
+            <!-- Botón: Agregar producto -->
+            <Button text="Agregar" fx:id="btnAgregar" onAction="#agregarProducto"/>
+            <!-- Botón: Editar producto -->
+            <Button text="Editar" fx:id="btnEditar" onAction="#editarProducto"/>
+            <!-- Botón: Eliminar producto -->
+            <Button text="Eliminar" fx:id="btnEliminar" onAction="#eliminarProducto"/>
+            <!-- Botón: Abrir ventana de gestión de almacenes -->
+            <Button text="Almacenes" fx:id="btnAlmacenes" onAction="#mostrarAlmacenes"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,74 @@
+/*
+    estilos.css
+    Hojas de estilo para la aplicación de Inventario & Almacenes en JavaFX.
+
+    Este archivo define la apariencia visual para:
+    - El fondo y fuente principal de la ventana
+    - Etiquetas (títulos)
+    - Tablas (bordes, encabezados, filas seleccionadas)
+    - Botones (colores, bordes, sombra y efecto hover)
+    - Cajas horizontales (HBox)
+*/
+
+/* Estiliza el fondo general y la fuente del programa */
+.root {
+    -fx-font-family: 'Segoe UI', 'Montserrat', 'Arial', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #ece9e6, #ffffff 120%);
+}
+
+/* Títulos principales */
+.label {
+    -fx-text-fill: #1a237e;
+}
+
+/* Fondo y bordes de la tabla de datos */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, #2196F322, 12, 0.5, 0, 2);
+}
+
+/* Fondo de encabezados de columna de la tabla */
+.table-view .column-header-background {
+    -fx-background-color: #1976D2;
+}
+
+/* Etiquetas de los encabezados de columna */
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Fila seleccionada en tabla */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #1976D233;
+}
+
+/* Diseño y efecto visual de los botones */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #2196F3 85%, #1976D2 100%);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-padding: 8 22 8 22;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow( gaussian, #1976D255, 5, 0.25, 0.0, 1 );
+}
+
+/* Espacio entre icono y texto en botones */
+.button .graphic {
+    -fx-padding: 0 7 0 0;
+}
+
+/* Efecto hover (pasar el mouse) sobre los botones */
+.button:hover {
+    -fx-background-color: linear-gradient(to top, #1d5fa1 0%, #64b5f6 100%);
+    -fx-cursor: hand;
+}
+
+/* Distancia entre elementos en HBox para mejor presentación */
+.hbox {
+    -fx-spacing: 20;
+}

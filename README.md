@@ -59,6 +59,50 @@ README.md
 pom.xml
 ```
 
+Mejoras en la Interfaz de Usuario y la Navegación
+
+    De Swing a JavaFX: Se reemplazó por completo la antigua y rígida interfaz gráfica de javax.swing por JavaFX.
+
+    Separación de Diseño y Lógica: La vista ahora se diseña de manera declarativa en archivos .fxml (InventarioView.fxml, AlmacenView.fxml), lo que permite que los diseñadores modifiquen la interfaz sin tocar el código Java.
+
+    Estilizado con CSS: Se implementó un archivo estilo.css global que aplica fondos en degradado, botones interactivos con efectos hover y sombras (drop-shadows) a las tablas, dándole un aspecto moderno y profesional.
+
+    Navegación Intuitiva: En lugar de un CardLayout incrustado, la gestión de almacenes ahora se abre como una ventana modular limpia que, al cerrarse, refresca automáticamente los ComboBoxes de la vista principal.
+
+Mejoras en el Manejo de Datos
+
+    Implementación de ORMLite: Se eliminó la clase Database.java que contenía sentencias SQL crudas ("INSERT INTO...", "UPDATE..."). Ahora, la persistencia se maneja automáticamente mapeando los objetos Java a las tablas SQLite.
+
+    Manejo de Relaciones: En la versión anterior, la relación entre Producto y Almacén era frágil (se guardaba un ID manual). Con ORMLite, se utiliza el atributo foreign = true, lo que permite traer el objeto Almacen completo de forma automática.
+
+    Gestor de Conexiones: La clase DatabaseManager ahora centraliza la conexión (JdbcConnectionSource) e inicializa automáticamente las tablas si no existen (TableUtils.createTableIfNotExists), evitando errores de bases de datos faltantes.
+
+Mejoras en los Modelos
+
+    Encapsulamiento estricto: Los modelos anteriores (mx.unison.Producto) tenían atributos públicos (public String nombre;), lo cual rompe los principios de la Programación Orientada a Objetos. En la nueva versión, los atributos son privados y se accede a ellos exclusivamente a través de métodos Getters y Setters.
+
+    Anotaciones: Se añadieron anotaciones de base de datos como @DatabaseTable(tableName = "productos") y @DatabaseField(generatedId = true) para automatizar la creación de esquemas.
+
+Mejoras en los Controladores
+
+    Adopción del patrón DAO: Toda la lógica de lectura/escritura hacia la base de datos se extrajo de las vistas y se colocó en clases dedicadas (ProductoDao, AlmacenDao).
+
+    Enlace de datos (Data Binding): Gracias a JavaFX, las tablas ahora se alimentan de listas observables (ObservableList). Cuando se agrega un registro, la tabla se actualiza automáticamente.
+
+    Clases DTO (Data Transfer Objects): En AlmacenController se implementó un AlmacenDTO que permite calcular de forma dinámica cuántos productos existen por almacén y mostrar ese número en la tabla, una función que no existía en la versión anterior.
+
+Comparación de Seguridad
+
+    Prevención de Inyección SQL: En la versión anterior se previno la inyección SQL utilizando PreparedStatement de JDBC. En la nueva versión, ORMLite se encarga de parametrizar todas las sentencias por debajo, manteniendo y garantizando la protección contra inyección SQL por defecto en todas las operaciones de CRUD.
+
+    Nota de alcance: El módulo de Autenticación de Usuarios (MD5) de la versión anterior no fue portado a esta nueva versión, ya que el enfoque actual fue establecer la arquitectura MVC y ORMLite.
+
+Comparación de Pruebas
+
+    Bases de Datos en Memoria: La mejora más significativa en la suite de pruebas es que ProductoDaoTest ahora utiliza una base de datos SQLite en memoria (jdbc:sqlite::memory:). En la versión antigua, las pruebas escribían directamente sobre el archivo de la base de datos real (Inventario.db), lo que corrompía los datos del usuario.
+
+    Pruebas de Unidad Puras: Se agregaron pruebas para verificar que el encapsulamiento de los Modelos (getters y setters) funcione correctamente (ProductoTest.java), mejorando la cobertura de código.
+    
 ## Autor
 
 Andrish Araiza

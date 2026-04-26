@@ -30,7 +30,8 @@ Este proyecto es una aplicación JavaFX con ORMLite para gestión de inventarios
 #### Nota
 - Si sale error sobre el archivo de base de datos, elimina `inventario.db` y reinicia.
 - Agrega primero uno o varios **almacenes** desde el botón `Almacenes`, y después podrás agregar productos.
-
+- Para poder editar `Almacenes` y `Productos` se debe de seleccionar el almacen o el producto que se desea editar y corregir en los campos correspondientes
+ 
 ## Generar documentación JavaDoc
 
 Si quieres generar la documentación JavaDoc, ejecuta:
